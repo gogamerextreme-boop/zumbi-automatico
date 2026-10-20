@@ -1,0 +1,23 @@
+
+name: Teste da fabrica de videos
+
+on:
+  workflow_dispatch:
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar Python
+        run: |
+          python3 --version
+          echo "Sistema de videos iniciado!"
+          mkdir -p output
+          echo "Primeiro teste concluido" > output/resultado.txt
+
+      - name: Guardar resultado
+        uses: actions/upload-artifact@v4
+        with:
+          name: primeiro-teste
+          path: output/resultado.txt
+          retention-days: 1 
